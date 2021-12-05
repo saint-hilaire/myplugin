@@ -9,9 +9,9 @@ Author URI: http://myplugin.example.com
 Text Domain: myplugin
 Domain Path: /languages
  */
-add_action( 'init', 'myplugin_do_thing' );
-function myplugin_do_thing() {
-	if(! isset( $_GET['wpsdt'] ) ):
+add_shortcode( 'myplugin_show_this_months_posts_by_author', 'myplugin_show_this_months_posts_by_author' );
+function myplugin_show_this_months_posts_by_author() {
+	if(! current_user_can( 'administrator' ) ):
 		return;
 	endif;
 
@@ -32,8 +32,17 @@ function myplugin_do_thing() {
 
 	$query = new WP_Query( $args );
 
-	echo "<pre>";
-	var_dump( $query );
-	echo "</pre>";
-	die;
+	ob_start();
+
+	while( $query->have_posts() ):
+		$query->the_post(); ?>
+
+		<h2><?php the_title(); ?></h2>
+		By <?php the_author(); ?> on <?php the_date(); ?>
+	<?php
+	endwhile;
+
+	wp_reset_postdata();
+
+	return ob_get_clean();
 }
