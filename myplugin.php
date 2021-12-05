@@ -9,4 +9,12 @@ Author URI: http://myplugin.example.com
 Text Domain: myplugin
 Domain Path: /languages
  */
-die("My Plugin was here.");
+add_action( 'init', 'myplugin_do_thing' );
+function myplugin_do_thing() {
+	if(! isset( $_GET['wpsdt'] ) ):
+		return;
+	endif;
+
+	var_dump("Here");
+	die;
+}
