@@ -38,7 +38,8 @@ function myplugin_show_this_months_posts_by_author() {
 		$query->the_post(); ?>
 
 		<h2><?php the_title(); ?></h2>
-		By <?php the_author(); ?> on <?php the_date(); ?>
+		By <?php the_author(); ?> on <?php 
+			echo get_the_date( 'l, F d, Y' ); ?>
 	<?php
 	endwhile;
 
