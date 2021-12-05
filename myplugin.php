@@ -16,9 +16,16 @@ function myplugin_do_thing() {
 	endif;
 
 	$args = array(
-		'posts_per_page' => 5,
+		'posts_per_page' => -1,
 		'post_type' => 'any',
 		'post_status' => 'publish',
+		'date_query' => array(
+			'after' => array(
+				'year' => date( 'Y' ),
+				'month' => date( 'M' ),
+			),
+			$day => 1
+		),
 		'orderby' => 'date',
 		'order' => 'DESC',
 	);
