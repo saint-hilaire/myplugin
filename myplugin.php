@@ -15,6 +15,18 @@ function myplugin_do_thing() {
 		return;
 	endif;
 
-	var_dump("Here");
+	$args = array(
+		'posts_per_page' => 5,
+		'post_type' => 'any',
+		'post_status' => 'publish',
+		'orderby' => 'date',
+		'order' => 'DESC',
+	);
+
+	$query = new WP_Query( $args );
+
+	echo "<pre>";
+	var_dump( $query );
+	echo "</pre>";
 	die;
 }
