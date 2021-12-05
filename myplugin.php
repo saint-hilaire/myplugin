@@ -23,8 +23,8 @@ function myplugin_do_thing() {
 			'after' => array(
 				'year' => date( 'Y' ),
 				'month' => date( 'm' ),
+				'day' => 1,
 			),
-			$day => 1
 		),
 		'orderby' => 'date',
 		'order' => 'DESC',
