@@ -22,7 +22,7 @@ function myplugin_do_thing() {
 		'date_query' => array(
 			'after' => array(
 				'year' => date( 'Y' ),
-				'month' => date( 'M' ),
+				'month' => date( 'm' ),
 			),
 			$day => 1
 		),
